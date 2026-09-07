@@ -1441,6 +1441,19 @@
                 }, 300);
             }, 3500);
         }
+        // Global accessibility handler for custom interactive elements
+document.addEventListener('keydown', function (event) {
+    // Check if the user pressed the "Enter" or "Space" key
+    if (event.key === 'Enter' || event.key === ' ') {
+        const activeEl = document.activeElement;
+        
+        // If the focused element has role="button", trigger a click
+        if (activeEl && activeEl.getAttribute('role') === 'button') {
+            event.preventDefault(); // Prevents page from scrolling down when pressing Space
+            activeEl.click();
+        }
+    }
+});
     </script>
 </body>
 </html>
